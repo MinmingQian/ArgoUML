@@ -87,7 +87,8 @@ public class ScenarioGUI extends javax.swing.JFrame {
         jButtonSave = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -281,7 +282,9 @@ public class ScenarioGUI extends javax.swing.JFrame {
             Concept parentConcept = new Concept();
             parentConcept.setName(Constants.knowledgeIdentifier);
             parentConcept.setDisplayName(Constants.knowledgeIdentifier);
-            ArrayList<Concept> parentConceptList = (ArrayList) port.getConceptListOfParents("DesignWorkspace", Constants.knowledgeIdentifier, parentConcept);
+            ArrayList<Concept> parentConceptList =
+                    (ArrayList) port.getConceptListOfParents("DesignWorkspace", Constants.knowledgeIdentifier, parentConcept);
+
             if( parentConceptList != null )
             {
                 for( int i = 0 ; i < parentConceptList.size() ; i++ )
@@ -343,6 +346,7 @@ public class ScenarioGUI extends javax.swing.JFrame {
                         childConcept.getName() != null && childConcept.getName().length() > 0 )
                 {
                     port.updateConcept(Constants.workspaceIdentifier, Constants.knowledgeIdentifier, childConcept);
+
                     jLabelInformation.setText("Infoamtion updated.");
                     resetFields();
                     initializeGUI();
@@ -352,6 +356,7 @@ public class ScenarioGUI extends javax.swing.JFrame {
             }
             else
             {
+
                 childConcept.setName("_PAKME_" + jTextFieldConceptName.getText());
                 childConcept.setDisplayName(jTextFieldConceptName.getText());
                 childConcept.setDescription(jTextAreaConceptDescription.getText());
@@ -445,6 +450,7 @@ public class ScenarioGUI extends javax.swing.JFrame {
 
     private void jButtonLoadExistingScenarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadExistingScenarioActionPerformed
         // TODO add your handling code here:
+
         try
         {
             ComboItem conceptComboItem = (ComboItem) jComboBoxConcept.getSelectedItem();
@@ -453,12 +459,15 @@ public class ScenarioGUI extends javax.swing.JFrame {
             {
                 Concept tempConcept = new Concept();
                 tempConcept.setName(conceptComboItem.getValue());
-                ArrayList<Concept> globalConceptList = (ArrayList) port.getConcept(Constants.workspaceIdentifier, Constants.knowledgeIdentifier, tempConcept);
+                ArrayList<Concept> globalConceptList =
+                        (ArrayList) port.getConcept(Constants.workspaceIdentifier, Constants.knowledgeIdentifier, tempConcept);
                 if( globalConceptList != null && globalConceptList.size() > 0 )
                     globalConcept = globalConceptList.get(0);
                 jTextFieldConceptName.setText(globalConcept.getDisplayName());
                 jTextAreaConceptDescription.setText(globalConcept.getDescription());
                 isLoadbuttonPressed = true;
+
+               
             }
         }
         catch(Exception ex)
@@ -466,11 +475,13 @@ public class ScenarioGUI extends javax.swing.JFrame {
             System.out.println("Exception in ScenarioGUI:jButtonLoadExistingScenarioActionPerformed");
             System.out.println(ex.toString());
         }
-        Concept childConcept = new Concept();
-        childConcept.setName("");
-        ArrayList<Concept> childConceptList = (ArrayList) port.getConcept(Constants.workspaceIdentifier, Constants.knowledgeIdentifier, childConcept);
-        if( childConceptList != null && childConceptList.size() > 0 )
-            childConcept = childConceptList.get(0);
+//        Concept childConcept = new Concept();
+//        childConcept.setName("");
+//        ArrayList<Concept> childConceptList =
+//                (ArrayList) port.getConcept(Constants.workspaceIdentifier, Constants.knowledgeIdentifier, childConcept);
+//        if( childConceptList != null && childConceptList.size() > 0 )
+//            childConcept = childConceptList.get(0);
+
     }//GEN-LAST:event_jButtonLoadExistingScenarioActionPerformed
 
     /**
@@ -507,6 +518,7 @@ public class ScenarioGUI extends javax.swing.JFrame {
             }
         });
     }
+
     private soapclient.DesignWorkspaceOntology port = null;
     private Concept globalConcept;
     private boolean isLoadbuttonPressed = false;

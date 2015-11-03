@@ -39,23 +39,42 @@
 
 package org.argouml.uml.diagram.static_structure.ui;
 
-import org.argouml.model.*;
+import java.awt.PopupMenu;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.Vector;
+
+import javax.swing.Action;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
+import org.argouml.model.AddAssociationEvent;
+import org.argouml.model.AssociationChangeEvent;
+import org.argouml.model.AttributeChangeEvent;
+import org.argouml.model.Model;
+import org.argouml.model.RemoveAssociationEvent;
+import org.argouml.model.UmlChangeEvent;
 import org.argouml.ui.ActionCreateContainedModelElement;
 import org.argouml.ui.ArgoJMenu;
 import org.argouml.uml.diagram.DiagramSettings;
-import org.argouml.uml.diagram.ui.*;
+import org.argouml.uml.diagram.ui.ActionAddNote;
+import org.argouml.uml.diagram.ui.ActionCompartmentDisplay;
+import org.argouml.uml.diagram.ui.ActionEdgesDisplay;
+import org.argouml.uml.diagram.ui.FigCompartment;
+import org.argouml.uml.diagram.ui.FigCompartmentBox;
+import org.argouml.uml.diagram.ui.FigOperationsCompartment;
 import org.tigris.gef.base.Editor;
 import org.tigris.gef.base.Globals;
 import org.tigris.gef.base.Selection;
 import org.tigris.gef.presentation.Fig;
 import org.uwl2owl.WorkspaceDriver;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.util.*;
-import java.util.List;
 
 /**
  * Class to display graphics for any UML Classifier in a diagram.<p>
@@ -69,9 +88,8 @@ public abstract class FigClassifierBox extends FigCompartmentBox {
      */
     private FigOperationsCompartment operationsFigCompartment;
     
-//    WorkspaceDriver wd = new WorkspaceDriver(); //added by joe
-    WorkspaceDriver wd;
-
+//    WorkspaceDriver wd = new WorkspaceDriver();
+    
     private Rectangle getDefaultBounds() {
         // this rectangle marks the operation section; all operations
         // are inside it
@@ -355,10 +373,10 @@ public abstract class FigClassifierBox extends FigCompartmentBox {
 //        JMenuItem patternItem = new JMenuItem("Pattern");
 //        JMenu relationMenu= new JMenu("Relationship");
 //        ArrayList<String> relationList = new ArrayList<String>();
-//        relationList = wd.getRelationlist();
-//        for (int i = 0; i < relationList.size(); i++) {
-//            relationMenu.add(new JMenuItem(relationList.get(i)));
-//        }
+////        relationList = wd.getRelationlist();
+////        for (int i = 0; i < relationList.size(); i++) {
+////            relationMenu.add(new JMenuItem(relationList.get(i)));
+////        }
 //
 //        JMenu WorkSpace = new JMenu("WorkSpace");
 //        WorkSpace.add(patternItem);
@@ -368,8 +386,7 @@ public abstract class FigClassifierBox extends FigCompartmentBox {
 ///*
 // * End Joe
 // */
-
-
+        
         addMenu.add(ActionEdgesDisplay.getShowEdges());
         addMenu.add(ActionEdgesDisplay.getHideEdges());
         return addMenu;

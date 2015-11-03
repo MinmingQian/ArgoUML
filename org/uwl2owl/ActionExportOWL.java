@@ -83,7 +83,7 @@ public class ActionExportOWL extends AbstractAction {
                 ProjectBrowser.getInstance().trySaveWithProgressMonitor(
                         false, theFile, false);
             }
-            
+
             
         }
     }

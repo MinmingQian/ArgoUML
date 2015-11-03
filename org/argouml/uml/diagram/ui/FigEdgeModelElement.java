@@ -357,9 +357,6 @@ public abstract class FigEdgeModelElement
             }
         }
 
-
-
-
         // popupAddOffset should be equal to the number of items added here:
         popUpActions.add(new JSeparator());
         popupAddOffset = 1;
@@ -370,11 +367,6 @@ public abstract class FigEdgeModelElement
         }
         popUpActions.add(new ActionDeleteModelElements());
         popupAddOffset++;
-
-
-
-
-
 
         if (TargetManager.getInstance().getTargets().size() == 1) {
             ToDoList list = Designer.theDesigner().getToDoList();
@@ -401,13 +393,6 @@ public abstract class FigEdgeModelElement
             }
         }
 
-        ArgoJMenu designWorkspace = new ArgoJMenu("menu.popup.design-workspace");
-        designWorkspace.add("menu.popup.design-workspace.set-scenario");
-        popUpActions.add(0, new JSeparator());
-        popUpActions.add(0, designWorkspace);
-
-
-
         // Add stereotypes submenu
         Action[] stereoActions = getApplyStereotypeActions();
         if (stereoActions != null && stereoActions.length > 0) {
@@ -419,9 +404,6 @@ public abstract class FigEdgeModelElement
             }
             popUpActions.add(0, stereotypes);
         }
-
-
-
 
         return popUpActions;
     }

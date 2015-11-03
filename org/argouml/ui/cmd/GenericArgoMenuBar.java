@@ -115,6 +115,7 @@ import org.tigris.gef.base.ReorderAction;
 import org.tigris.toolbar.ToolBarFactory;
 import org.uwl2owl.ActionExportOWL;
 import org.uwl2owl.Converter;
+import org.uwl2owl.DesignWorkspaceDemo;
 
 /**
  * GenericArgoMenuBar defines the menu bar for all operating systems which do
@@ -952,17 +953,27 @@ public class GenericArgoMenuBar extends JMenuBar implements
         //Add by Joe
         JMenuItem umlToOwl= tools.add(new JMenuItem("Convert to OWL"));
         umlToOwl.addActionListener(new ActionListener() {
-            
+
             public void actionPerformed(ActionEvent e) {
                 // TODO: Auto-generated method stub
                 Converter main = new Converter();
 //                main.httpConn();
                 File tempFile = main.createAndShowFileChoose();
                 main.httpConn(tempFile);
-                
+
             }
         });
-        
+
+        //Add by YangLu
+        JMenuItem designWorkspace = tools.add(new JMenuItem("DesignWorkspace Demo"));
+        designWorkspace.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DesignWorkspaceDemo().setVisible(true);
+                }
+        });
+
+
         // TODO: Add empty placeholder here?
 
         add(tools);

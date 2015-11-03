@@ -724,12 +724,12 @@ public abstract class FigNodeModelElement
             popUpActions.add(0, stereotypesView);
         }
 
-
-
+        //Add by Minming
         ArgoJMenu designWorkspace = new ArgoJMenu("menu.popup.design-workspace");
         designWorkspace.add(new ActionSetScenario());
         popUpActions.add(0, new JSeparator());
         popUpActions.add(0, designWorkspace);
+
 
         return popUpActions;
     }

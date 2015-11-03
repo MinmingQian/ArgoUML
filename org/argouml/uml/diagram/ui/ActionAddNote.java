@@ -38,6 +38,14 @@
 
 package org.argouml.uml.diagram.ui;
 
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.util.Collection;
+import java.util.Iterator;
+
+import javax.swing.Action;
+
 import org.argouml.application.helpers.ResourceLoaderWrapper;
 import org.argouml.i18n.Translator;
 import org.argouml.kernel.UmlModelMutator;
@@ -53,12 +61,6 @@ import org.tigris.gef.presentation.Fig;
 import org.tigris.gef.presentation.FigEdge;
 import org.tigris.gef.presentation.FigNode;
 import org.tigris.gef.presentation.FigPoly;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * Action to add a note aka comment. This action adds a Comment to 0..*
@@ -134,8 +136,6 @@ public class ActionAddNote extends UndoableAction {
                 }
             }
         }
-
-
 
         //Create the Node Fig for the comment itself and draw it
         mgm.addNode(comment);
