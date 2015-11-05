@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="uml2owl1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/uml2owl.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="uml2owl">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/build-eclipse/uml2owl.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
